@@ -7,7 +7,7 @@ It is cryptographically secure if the machine you are using it on is secure.
 ## How to use
 
 ```
-easy-password [OPTIONS] file seperator1 seperator2
+easypassword [OPTIONS] file seperator1 seperator2
 ```
 
 The file has to have one word per line.
@@ -19,55 +19,36 @@ These seperators will alternate after every word. One seperator should be a spec
 ### Example uses
 
 ```
-$ > easy-password example_word_files/word_list.txt % 5
+$ > easypassword example_word_files/word_list.txt % 5
 Fewer%Trees5Cleaning%Kitty5
-$ > easy-password --number=5 example_word_files/word_list.txt '$' 8
+$ > easypassword --number=5 example_word_files/word_list.txt '$' 8
 Symbol$Teacher8Requieres$Minimal8Pills$
 ```
 
 ## How to install
 
-### Using cabal
-You need to download cabal or install it on your system trhough your package manager.
+### Using cargo
+You need to install cargo on your system through your package manager or any other means.
+
+Then you simply install it through cargo.
+
+```
+$ > cargo install easypassword
+```
+
+### Using source
+You need to install cargo on your system through your package manager or any other means.
 
 Then  you download the repository through git or manual.
 
 After unpacking or downloading from git you have to switch into the folder of easy-password generator.
 
-Then run `cabal new-install`.
+Then run `cargo install --path .`.
 
 
 ```
-$ > cd easy-password-generator
-$ > cabal new-install
-```
-
-### Using stack
-You need to download stack or install it on your system through your package manager.
-
-Then you download the repository through git or manual.
-
-After unpacking or downloading from git you have to switch into the folder of easy-password-generator.
-
-Then run `stack setup` followed by `stack install`.
-
-```
-$ > cd easy-password-generator
-$ > stack setup
-$ > stack install
-```
-
-### Using nix
-You need to download nix or install it on your system trhough your package manager.
-
-Then  you download the repository through git or manual.
-
-After unpacking or downloading from git you have to switch into the folder of easy-password generator.
-
-Then run `nix-build release.nix`.
-```
-$ > cd easy-password-generator
-$ > nix-build release.nix
+$ > cd easypassword
+$ > cargo install --path
 ```
 
 ## Credits
