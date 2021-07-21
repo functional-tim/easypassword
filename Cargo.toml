@@ -7,7 +7,7 @@ license = "MIT OR Apache-2.0"
 description = "A program to create passwords like in xkcd.com/936.\nThe file has to have one word per line.\nOne seperator should be a special character.\nThe other seperator should be a number."
 homepage = "https://github.com/functional-tim/easypassword"
 repository = "https://github.com/functional-tim/easypassword"
-readme = "https://github.com/functional-tim/easypassword#readme"
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
