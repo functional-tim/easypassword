@@ -10,6 +10,7 @@
 use heck::TitleCase;
 use rand::RngCore;
 use rand::rngs::OsRng;
+use std::mem::swap;
 
 
 
@@ -32,9 +33,7 @@ pub fn password(words: Vec<String>, mut s1: String, mut s2: String) -> String {
     for mut word in words {
         word.push_str(&s1);
         password = password + &word;
-        let temp = s1;
-        s1 = s2;
-        s2 = temp;
+        swap(&mut s1, &mut s2);
     }
     password
 }
@@ -44,16 +43,10 @@ pub fn password(words: Vec<String>, mut s1: String, mut s2: String) -> String {
 /// Creates a list of random numbers. The size of the list is the input.
 /// The numbers are created by the csprng of the operating system.
 /// The variable n is the number of numbers we want from the function.
-pub fn random_numbers(mut n: usize) -> Vec<usize> {
+pub fn random_numbers(n: usize) -> Vec<usize> {
+    let mut rng = OsRng::new().expect("error creating OsRng");
     let mut numbers: Vec<usize> = Vec::new();
-    match OsRng::new() {
-        Err(err) => panic!("error: {:?}", err),
-        Ok(mut f) =>
-            while n > 0 {
-                numbers.push(OsRng::next_u64(&mut f) as usize);
-                n -= 1;
-            },
-    };
+    numbers.resize_with(n, || OsRng::next_u64(&mut rng) as usize);
     numbers
 }
 
@@ -67,7 +60,7 @@ pub fn choose_words(words: Vec<String>, numbers: Vec<usize>) -> Vec<String> {
     for i in numbers {
         let temp = &words[i%words.len()];
         let temp = temp.to_title_case();
-        let temp = String::from(temp);
+//        let temp = String::from(temp);
         chosen.push(temp);
     }
     chosen
