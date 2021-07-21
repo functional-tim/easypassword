@@ -1,4 +1,4 @@
-# easy-password-generator
+# easypassword
 
 This password generator was inspired by this comic of Randall Munroe: https://xkcd.com/936/.
 
