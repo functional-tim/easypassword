@@ -47,9 +47,8 @@ pub fn choose_words(words: Vec<String>, n: usize) -> Vec<String> {
     numbers.resize_with(n, || rng.gen_range(0,words.len()));
     let mut chosen: Vec<String> = Vec::new();
     for i in numbers {
-        let temp = &words[i%words.len()];
+        let temp = &words[i];
         let temp = temp.to_title_case();
-//        let temp = String::from(temp);
         chosen.push(temp);
     }
     chosen
