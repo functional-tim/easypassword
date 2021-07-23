@@ -54,5 +54,4 @@ $ > cargo install --path
 ## Credits
 
 - Randall Munroe for the idea
-- Piyush P Kurur for the cryptographic library [raaz](https://hackage.haskell.org/package/raaz-0.2.1)
 - first20hours for the [word lists](https://github.com/first20hours/google-10000-english)
