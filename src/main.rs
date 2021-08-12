@@ -16,6 +16,7 @@ use structopt::StructOpt;
 mod password;
 
 
+
 /// Struct for the parameters of the app.
 #[derive(Debug, StructOpt)]
 #[structopt(name = "easypassword",
