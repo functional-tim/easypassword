@@ -1,10 +1,11 @@
 /*
-    main.rs - Console program to create the password.
-
-    (C) 2020 Tim Gravert <crazymind102@googlemail.com>
-
-    License: MIT OR Apache-2.0
-*/
+ * main.rs - Console program to create the password.
+ *
+ * (C) 2020 Tim Gravert <tim.gravert@web.de>
+ *
+ * License: MIT OR Apache-2.0
+ *
+ */
 
 
 use std::fs::File;

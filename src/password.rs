@@ -1,10 +1,11 @@
 /*
-    password.rs - Functions to create the password.
-
-    (C) 2020 Tim Gravert <crazymind102@googlemail.com>
-
-    License: MIT OR Apache-2.0
-*/
+ * password.rs - Functions to create the password.
+ *
+ * (C) 2020 Tim Gravert <crazymind102@googlemail.com>
+ *
+ * License: MIT OR Apache-2.0
+ *
+ */
 
 
 use heck::TitleCase;
