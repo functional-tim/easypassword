@@ -54,4 +54,3 @@ $ > cargo install --path
 ## Credits
 
 - Randall Munroe for the idea
-- first20hours for the [word lists](https://github.com/first20hours/google-10000-english)
