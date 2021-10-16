@@ -16,15 +16,6 @@ To make the passwords more secure two seperators are choosen.
 
 These seperators will alternate after every word. One seperator should be a special character and the other seperator should be a number.
 
-### Example uses
-
-```
-$ > easypassword example_word_files/word_list.txt % 5
-Fewer%Trees5Cleaning%Kitty5
-$ > easypassword --number=5 example_word_files/word_list.txt '$' 8
-Symbol$Teacher8Requieres$Minimal8Pills$
-```
-
 ## How to install
 
 ### Using cargo
