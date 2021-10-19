@@ -20,8 +20,7 @@ use std::mem::swap;
 /// password.
 pub fn create_password(wordlist: Vec<String>, s1: String, s2: String, n: usize) -> String {
     let chosen = choose_words(wordlist, n);
-    let password = password(chosen, s1, s2);
-    password
+    password(chosen, s1, s2)
 }
 
 

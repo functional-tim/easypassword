@@ -53,9 +53,9 @@ fn lines_from_file(filename: impl AsRef<Path>) -> Result<Vec<String>, (String, i
     };
     let buf = BufReader::new(file);
     match buf.lines().collect() {
-        Ok(res) => return Ok(res),
-        Err(_) => return Err((String::from("file contained invalid UTF-8"),101)),
-    };
+        Ok(res) => Ok(res),
+        Err(_) => Err((String::from("file contained invalid UTF-8"),101)),
+    }
 }
 
 
