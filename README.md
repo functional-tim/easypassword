@@ -27,6 +27,16 @@ Then you simply install it through cargo.
 $ > cargo install easypassword
 ```
 
+### Using nix
+You need to install nix on your system through your package manager or any other means.
+
+Then you simply run the following commands.
+
+```
+$ > nix-build
+$ > nix-env -i ./result
+```
+
 ### Using source
 You need to install cargo on your system through your package manager or any other means.
 

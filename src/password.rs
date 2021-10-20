@@ -7,13 +7,10 @@
  *
  */
 
-
 use heck::TitleCase;
-use rand::Rng;
 use rand::rngs::OsRng;
+use rand::Rng;
 use std::mem::swap;
-
-
 
 /// Function to create a easy to remember password.
 /// It takes the wordlist, two seperators and the number which is the number of words in the
@@ -22,7 +19,6 @@ pub fn create_password(wordlist: Vec<String>, s1: String, s2: String, n: usize) 
     let chosen = choose_words(wordlist, n);
     password(chosen, s1, s2)
 }
-
 
 /// Password creation function.
 /// Two Strings get interlaced between a list of Strings to form a secure easy to remember
@@ -37,14 +33,13 @@ pub fn password(words: Vec<String>, mut s1: String, mut s2: String) -> String {
     password
 }
 
-
 /// Random word collector.
 /// Creates a list of random words with the help of a list of random numbers which are cryptograhically secure.
 /// The first letter of each word gets capitalized to add to the security of the password.
 pub fn choose_words(words: Vec<String>, n: usize) -> Vec<String> {
     let mut rng = OsRng::new().expect("error creating OsRng");
     let mut numbers: Vec<usize> = Vec::new();
-    numbers.resize_with(n, || rng.gen_range(0,words.len()));
+    numbers.resize_with(n, || rng.gen_range(0, words.len()));
     let mut chosen: Vec<String> = Vec::new();
     for i in numbers {
         let temp = &words[i];

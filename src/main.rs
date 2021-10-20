@@ -7,7 +7,6 @@
  *
  */
 
-
 use std::fs::File;
 use std::io::{prelude::*, BufReader};
 use std::path::{Path, PathBuf};
@@ -16,15 +15,15 @@ use structopt::StructOpt;
 
 mod password;
 
-
-
 /// Struct for the parameters of the app.
 #[derive(Debug, StructOpt)]
-#[structopt(name = "easypassword",
-about = "A program to create passwords like in xkcd.com/936.
+#[structopt(
+    name = "easypassword",
+    about = "A program to create passwords like in xkcd.com/936.
 The file has to have one word per line.
 One seperator should be a special character.
-The other seperator should be a number.")]
+The other seperator should be a number."
+)]
 struct Opt {
     /// Input file
     #[structopt(parse(from_os_str))]
@@ -43,7 +42,6 @@ struct Opt {
     number: usize,
 }
 
-
 /// Auxiliary function to transform the input file into a Vector of single words.
 /// Input file has to be formatted in such a way that every word is on a single line.
 fn lines_from_file(filename: impl AsRef<Path>) -> Result<Vec<String>, (String, i32)> {
@@ -54,10 +52,9 @@ fn lines_from_file(filename: impl AsRef<Path>) -> Result<Vec<String>, (String, i
     let buf = BufReader::new(file);
     match buf.lines().collect() {
         Ok(res) => Ok(res),
-        Err(_) => Err((String::from("file contained invalid UTF-8"),101)),
+        Err(_) => Err((String::from("file contained invalid UTF-8"), 101)),
     }
 }
-
 
 /// Main program logic.
 fn main() {
@@ -67,7 +64,7 @@ fn main() {
         Err((err, c)) => {
             eprintln!("Error: {}", err);
             exit(c);
-        },
+        }
     };
     let password = password::create_password(wordlist, opt.seperator1, opt.seperator2, opt.number);
     println!("{}", password);
