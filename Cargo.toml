@@ -1,6 +1,6 @@
 [package]
 name = "easypassword"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["functional-tim <crazymind102@googlemail.com>"]
 edition = "2018"
 description = "A program to create passwords like in xkcd.com/936.\nThe file has to have one word per line.\nOne seperator should be a special character.\nThe other seperator should be a number."
@@ -10,8 +10,6 @@ repository = "https://github.com/functional-tim/easypassword"
 license = "MIT OR Apache-2.0"
 keywords = ["password", "security"]
 categories = ["command-line-utilities"]
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 heck = "^0.3"
