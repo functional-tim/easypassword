@@ -12,6 +12,8 @@ use rand::rngs::OsRng;
 use rand::Rng;
 use std::mem::swap;
 
+
+
 /// Function to create a easy to remember password.
 /// It takes the wordlist, two seperators and the number which is the number of words in the
 /// password.

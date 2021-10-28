@@ -1,5 +1,11 @@
 # easypassword
 
+[![Crates.io](https://img.shields.io/crates/v/easypassword.svg)](https://crates.io/crates/easypassword)
+[![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/functional-tim/blob/main/LICENSE)
+[![dependency status](https://deps.rs/repo/github/functional-tim/easypassword/status.svg)](https://deps.rs/repo/github/functional-tim/easypassword)
+
+-----------------------------------------------
+
 This password generator was inspired by this comic of Randall Munroe: https://xkcd.com/936/.
 
 It is cryptographically secure if the machine you are using it on is secure.
