@@ -61,13 +61,13 @@ fn lines_from_file(filename: impl AsRef<Path>) -> Result<Vec<String>, (String, i
 /// Main program logic.
 fn main() {
     let opt = Opt::from_args();
-    let wordlist = match lines_from_file(opt.file) {
+    let mut wordlist = match lines_from_file(opt.file) {
         Ok(x) => x,
         Err((err, c)) => {
             eprintln!("Error: {}", err);
             exit(c);
         }
     };
-    let password = password::create_password(wordlist, opt.seperator1, opt.seperator2, opt.number);
+    let password = password::create_password(&mut wordlist, opt.seperator1, opt.seperator2, opt.number);
     println!("{}", password);
 }
