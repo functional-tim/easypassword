@@ -36,6 +36,8 @@ $ > cargo install easypassword
 ### Using nix
 You need to install nix on your system through your package manager or any other means.
 
+After unpacking or downloading from git you have to switch into the folder of easypassword.
+
 Then you simply run the following commands.
 
 ```
@@ -48,10 +50,9 @@ You need to install cargo on your system through your package manager or any oth
 
 Then  you download the repository through git or manual.
 
-After unpacking or downloading from git you have to switch into the folder of easy-password generator.
+After unpacking or downloading from git you have to switch into the folder of easypassword.
 
 Then run `cargo install --path .`.
-
 
 ```
 $ > cd easypassword
