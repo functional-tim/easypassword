@@ -15,8 +15,6 @@ use structopt::StructOpt;
 
 mod password;
 
-
-
 /// Struct for the parameters of the app.
 #[derive(Debug, StructOpt)]
 #[structopt(
@@ -68,6 +66,7 @@ fn main() {
             exit(c);
         }
     };
-    let password = password::create_password(&mut wordlist, opt.seperator1, opt.seperator2, opt.number);
+    let password =
+        password::create_password(&mut wordlist, opt.seperator1, opt.seperator2, opt.number);
     println!("{}", password);
 }
