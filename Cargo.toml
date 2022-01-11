@@ -12,6 +12,6 @@ keywords = ["password", "security"]
 categories = ["command-line-utilities"]
 
 [dependencies]
-heck = "^0.3"
+heck = "^0.4"
 rand = "^0.8"
 structopt = "^0.3"

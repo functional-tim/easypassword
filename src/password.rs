@@ -7,7 +7,7 @@
  *
  */
 
-use heck::TitleCase;
+use heck::ToTitleCase;
 use rand::Rng;
 use std::mem::swap;
 

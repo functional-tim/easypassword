@@ -59,6 +59,13 @@ $ > cd easypassword
 $ > cargo install --path
 ```
 
-## Credits
+## License
+easypassword is dual licensed under [MIT License](LICENSE-MIT) and [Apache 2 License](LICENSE-APACHE).
+
+All data in the directory of 12dicts are under the following license:
+> The 12dicts lists were compiled by Alan Beale. I explicitly release them to the public domain, but request acknowledgment of their use. (Actually, the dependency of the 2of12inf list and the 2+2+3 lists on AGID prevents their release into the public domain. However, I do not impose any additional requirements on their use beyond those imposed by AGID and its sources, as described in [agid.txt](12dicts/agid.txt).)
+
+## Credits and Acknowledgments
 
 - Randall Munroe for the idea
+- Alan Beale for 12dicts word lists (http://wordlist.aspell.net/12dicts/)
