@@ -7,6 +7,7 @@
  *
  */
 
+use heck::ToTitleCase;
 use std::fs::File;
 use std::io::{prelude::*, BufReader};
 use std::path::{Path, PathBuf};
@@ -20,13 +21,13 @@ mod password;
 #[structopt(
     name = "easypassword",
     about = "A program to create passwords like in xkcd.com/936.
-The file has to have one word per line.
 One seperator should be a special character.
-The other seperator should be a number."
+The other seperator should be a number.
+Source and licenses are found here: https://github.com/functional-tim/easypassword/"
 )]
 struct Opt {
     /// Input file
-    #[structopt(parse(from_os_str))]
+    #[structopt(parse(from_os_str), short = "i", long = "input", default_value = "")]
     file: PathBuf,
 
     /// Seperator 1
@@ -58,15 +59,18 @@ fn lines_from_file(filename: impl AsRef<Path>) -> Result<Vec<String>, (String, i
 
 /// Main program logic.
 fn main() {
+    let mut wordlist = include_str!("../12dicts/International/3of6game.txt").split("\n").map(|x| x.parse::<String>().unwrap()).collect();
     let opt = Opt::from_args();
-    let mut wordlist = match lines_from_file(opt.file) {
-        Ok(x) => x,
-        Err((err, c)) => {
-            eprintln!("Error: {}", err);
-            exit(c);
-        }
-    };
-    let password =
-        password::create_password(&mut wordlist, opt.seperator1, opt.seperator2, opt.number);
+    if opt.file.to_str() != Some("") {
+        wordlist = match lines_from_file(opt.file) {
+            Ok(x) => x,
+            Err((err, c)) => {
+                eprintln!("Error: {}", err);
+                exit(c);
+            }
+        };
+    }
+    wordlist = wordlist.iter().map(|s| s.to_title_case().trim().to_string()).collect();
+    let password = password::create_password(&mut wordlist, opt.seperator1, opt.seperator2, opt.number);
     println!("{}", password);
 }

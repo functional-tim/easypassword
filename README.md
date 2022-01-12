@@ -13,14 +13,19 @@ It is cryptographically secure if the machine you are using it on is secure.
 ## How to use
 
 ```
-easypassword [OPTIONS] file seperator1 seperator2
+easypassword [OPTIONS] seperator1 seperator2
 ```
-
-The file has to have one word per line.
 
 To make the passwords more secure two seperators are choosen.
 
-These seperators will alternate after every word. One seperator should be a special character and the other seperator should be a number.
+These seperators will alternate after every word. One seperator should be a special character and the other seperator should be a number. You can choose which one is which.
+
+If you want to use your own word list file you can do so through the option `-i` or `--input`.
+Each line of the file has to be a single word.
+
+```
+easypassword -i file seperator1 seperator2
+```
 
 ## How to install
 
