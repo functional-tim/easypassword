@@ -57,9 +57,18 @@ fn lines_from_file(filename: impl AsRef<Path>) -> Result<Vec<String>, (String, i
     }
 }
 
+
+fn transform(st: &mut Vec<String>) {
+    for s in st {
+        s.retain(|c| !c.is_whitespace());
+        *s = s.to_title_case();
+    }
+}
+
+
 /// Main program logic.
 fn main() {
-    let mut wordlist = include_str!("../12dicts/International/3of6game.txt").split("\n").map(|x| x.parse::<String>().unwrap()).collect();
+    let mut wordlist: Vec<String> = include_str!("../12dicts/International/3of6game.txt").split('\n').map(|x| x.parse::<String>().unwrap()).collect();
     let opt = Opt::from_args();
     if opt.file.to_str() != Some("") {
         wordlist = match lines_from_file(opt.file) {
@@ -70,7 +79,7 @@ fn main() {
             }
         };
     }
-    wordlist = wordlist.iter().map(|s| s.to_title_case().trim().to_string()).collect();
+    transform(&mut wordlist);
     let password = password::create_password(&mut wordlist, opt.seperator1, opt.seperator2, opt.number);
     println!("{}", password);
 }

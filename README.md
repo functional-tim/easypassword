@@ -21,7 +21,7 @@ To make the passwords more secure two seperators are choosen.
 These seperators will alternate after every word. One seperator should be a special character and the other seperator should be a number. You can choose which one is which.
 
 If you want to use your own word list file you can do so through the option `-i` or `--input`.
-Each line of the file has to be a single word.
+Each line of the file should be a single word or an open compound word.
 
 ```
 easypassword -i file seperator1 seperator2
