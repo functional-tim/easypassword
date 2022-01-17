@@ -1,7 +1,7 @@
 /*
  * password.rs - Functions to create the password.
  *
- * (C) 2020 Tim Gravert <crazymind102@googlemail.com>
+ * (C) 2020 Tim Gravert <tim.gravert@web.de>
  *
  * License: MIT OR Apache-2.0
  *
