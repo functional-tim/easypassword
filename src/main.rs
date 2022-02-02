@@ -7,6 +7,7 @@
  *
  */
 
+use exitcode;
 use heck::ToTitleCase;
 use std::fs::File;
 use std::io::{prelude::*, BufReader};
@@ -48,12 +49,12 @@ struct Opt {
 fn lines_from_file(filename: impl AsRef<Path>) -> Result<Vec<String>, (String, i32)> {
     let file = match File::open(filename) {
         Ok(file) => file,
-        Err(_) => return Err((String::from("no such file"), 2)),
+        Err(_) => return Err((String::from("no such file"), exitcode::NOINPUT)),
     };
     let buf = BufReader::new(file);
     match buf.lines().collect() {
         Ok(res) => Ok(res),
-        Err(_) => Err((String::from("file contained invalid UTF-8"), 101)),
+        Err(_) => Err((String::from("file contained invalid UTF-8"), exitcode::DATAERR)),
     }
 }
 
@@ -82,4 +83,5 @@ fn main() {
     transform(&mut wordlist);
     let password = password::create_password(&mut wordlist, opt.seperator1, opt.seperator2, opt.number);
     println!("{}", password);
+    exit(exitcode::OK);
 }
