@@ -17,7 +17,7 @@ use structopt::StructOpt;
 
 mod password;
 
-/// Struct for the parameters of the app.
+// Struct for the parameters of the app.
 #[derive(Debug, StructOpt)]
 #[structopt(
     name = "easypassword",
@@ -27,25 +27,25 @@ The other seperator should be a number.
 Source and licenses are found here: https://github.com/functional-tim/easypassword/"
 )]
 struct Opt {
-    /// Input file
+    // Input file
     #[structopt(parse(from_os_str), short = "i", long = "input", default_value = "")]
     file: PathBuf,
 
-    /// Seperator 1
+    // Seperator 1
     #[structopt()]
     seperator1: String,
 
-    /// Seperator 2
+    // Seperator 2
     #[structopt()]
     seperator2: String,
 
-    /// Number of words
+    // Number of words
     #[structopt(short = "n", long = "number", default_value = "4")]
     number: usize,
 }
 
-/// Auxiliary function to transform the input file into a Vector of single words.
-/// Input file has to be formatted in such a way that every word is on a single line.
+// Auxiliary function to transform the input file into a Vector of single words.
+// Input file has to be formatted in such a way that every word is on a single line.
 fn lines_from_file(filename: impl AsRef<Path>) -> Result<Vec<String>, (String, i32)> {
     let file = match File::open(filename) {
         Ok(file) => file,
@@ -67,7 +67,7 @@ fn transform(st: &mut Vec<String>) {
 }
 
 
-/// Main program logic.
+// Main program logic.
 fn main() {
     let mut wordlist: Vec<String> = include_str!("../12dicts/International/3of6game.txt").split('\n').map(|x| x.parse::<String>().unwrap()).collect();
     let opt = Opt::from_args();
