@@ -37,7 +37,7 @@ pub fn password(words: Vec<String>, mut s1: String, mut s2: String) -> String {
     password
 }
 
-/* 
+/*
  * Random word collector.
  * Creates a vector of Strings which are randomly chosen by the cryptographical secure random number
  * generator of the OS.
