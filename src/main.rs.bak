@@ -7,13 +7,13 @@
  *
  */
 
-use exitcode;
 use eframe::egui;
+use exitcode;
 use heck::ToTitleCase;
 use std::fs::File;
 use std::io::{prelude::*, BufReader};
 use std::path::{Path, PathBuf};
-use std::process::exit;
+//use std::process::exit;
 use structopt::StructOpt;
 
 mod password;
@@ -55,10 +55,12 @@ fn lines_from_file(filename: impl AsRef<Path>) -> Result<Vec<String>, (String, i
     let buf = BufReader::new(file);
     match buf.lines().collect() {
         Ok(res) => Ok(res),
-        Err(_) => Err((String::from("file contained invalid UTF-8"), exitcode::DATAERR)),
+        Err(_) => Err((
+            String::from("file contained invalid UTF-8"),
+            exitcode::DATAERR,
+        )),
     }
 }
-
 
 fn transform(st: &mut Vec<String>) {
     for s in st {
@@ -66,7 +68,6 @@ fn transform(st: &mut Vec<String>) {
         *s = s.to_title_case();
     }
 }
-
 
 // Main program logic.
 /*
@@ -88,8 +89,28 @@ fn main() {
     exit(exitcode::OK);
 }
 */
+
 // GUI Stuff
+/*
 fn main() {
+    Window::new("Hello world")
+        .size([300.0, 100.0], Condition::FirstUseEver)
+        .build(&ui, || {
+            ui.text("Hello world!");
+            ui.text("こんにちは世界！");
+            ui.text("This...is...imgui-rs!");
+            ui.separator();
+            let mouse_pos = ui.io().mouse_pos;
+            ui.text(format!(
+                "Mouse Position: ({:.1},{:.1})",
+                mouse_pos[0], mouse_pos[1]
+            ));
+        });
+}
+*/
+
+fn main() {
+    let mut wordlist: Vec<String> = include_str!("../12dicts/International/3of6game.txt").split('\n').map(|x| x.parse::<String>().unwrap()).collect();
     let options = eframe::NativeOptions::default();
     eframe::run_native(
         "My egui App",
