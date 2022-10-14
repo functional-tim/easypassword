@@ -56,7 +56,7 @@ dependencies = [
  "objc",
  "objc-foundation",
  "objc_id",
- "parking_lot 0.12.1",
+ "parking_lot",
  "thiserror",
  "winapi",
  "x11rb",
@@ -180,12 +180,6 @@ checksum = "0ced0551234e87afee12411d535648dd89d2e7f34c78b753395567aff3d447ff"
 dependencies = [
  "libc",
 ]
-
-[[package]]
-name = "chlorine"
-version = "1.0.10"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "75476fe966a8af7c0ceae2a3e514afa87d4451741fcdfab8bfaa07ad301842ec"
 
 [[package]]
 name = "clap"
@@ -432,7 +426,6 @@ dependencies = [
  "egui",
  "exitcode",
  "heck 0.4.0",
- "imgui",
  "rand",
  "structopt",
 ]
@@ -522,7 +515,7 @@ dependencies = [
  "bytemuck",
  "emath",
  "nohash-hasher",
- "parking_lot 0.12.1",
+ "parking_lot",
 ]
 
 [[package]]
@@ -704,7 +697,7 @@ dependencies = [
  "objc",
  "once_cell",
  "osmesa-sys",
- "parking_lot 0.12.1",
+ "parking_lot",
  "raw-window-handle 0.5.0",
  "wayland-client",
  "wayland-egl",
@@ -789,27 +782,6 @@ checksum = "e14ddfc70884202db2244c223200c204c2bda1bc6e0998d11b5e024d657209e6"
 dependencies = [
  "unicode-bidi",
  "unicode-normalization",
-]
-
-[[package]]
-name = "imgui"
-version = "0.8.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e6a33933d4645d6db1bfa55ff75e13ef301644d4c001cfaec6fe3afcfb05b82c"
-dependencies = [
- "bitflags",
- "imgui-sys",
- "parking_lot 0.11.2",
-]
-
-[[package]]
-name = "imgui-sys"
-version = "0.8.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "286f5338bd8281e3203de29cc317d123b178f2e565eca5aee770a2048074fdf7"
-dependencies = [
- "cc",
- "chlorine",
 ]
 
 [[package]]
@@ -1021,7 +993,7 @@ dependencies = [
  "ndk-macro",
  "ndk-sys 0.4.0",
  "once_cell",
- "parking_lot 0.12.1",
+ "parking_lot",
 ]
 
 [[package]]
@@ -1172,37 +1144,12 @@ dependencies = [
 
 [[package]]
 name = "parking_lot"
-version = "0.11.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7d17b78036a60663b797adeaee46f5c9dfebb86948d1255007a1d6be0271ff99"
-dependencies = [
- "instant",
- "lock_api",
- "parking_lot_core 0.8.5",
-]
-
-[[package]]
-name = "parking_lot"
 version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3742b2c103b9f06bc9fff0a37ff4912935851bee6d36f3c02bcc755bcfec228f"
 dependencies = [
  "lock_api",
- "parking_lot_core 0.9.3",
-]
-
-[[package]]
-name = "parking_lot_core"
-version = "0.8.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d76e8e1493bcac0d2766c42737f34458f1c8c50c0d23bcb24ea953affb273216"
-dependencies = [
- "cfg-if",
- "instant",
- "libc",
- "redox_syscall",
- "smallvec",
- "winapi",
+ "parking_lot_core",
 ]
 
 [[package]]
@@ -2025,7 +1972,7 @@ dependencies = [
  "ndk-glue 0.7.0",
  "objc",
  "once_cell",
- "parking_lot 0.12.1",
+ "parking_lot",
  "percent-encoding",
  "raw-window-handle 0.4.3",
  "raw-window-handle 0.5.0",

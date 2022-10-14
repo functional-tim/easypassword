@@ -16,14 +16,5 @@ eframe = "^0.19"
 egui = "^0.19"
 exitcode = "^1.1"
 heck = "^0.4"
-imgui = "^0.8.2"
 rand = "^0.8"
 structopt = "^0.3"
-
-[[bin]]
-name = "easypassword-cli"
-path = "src/easypassword-cli.rs"
-
-[[bin]]
-name = "easypassword"
-path = "src/easypassword.rs"
