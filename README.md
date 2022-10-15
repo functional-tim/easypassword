@@ -1,6 +1,6 @@
 # easypassword
 
-[<img alt="github" src="https://img.shields.io/badge/github-functional--tim%2Feasypassword-blue?logo=github" height="20">](https://github.com/functional-tim/easypassword)
+[<img alt="github" src="https://img.shields.io/badge/github-functional--tim%2Feasypassword-ebdbb2?logo=github" height="20">](https://github.com/functional-tim/easypassword)
 [![Crates.io](https://img.shields.io/crates/v/easypassword.svg)](https://crates.io/crates/easypassword)
 [![unsafe forbidden](https://img.shields.io/badge/unsafe-forbidden-success.svg)](https://github.com/rust-secure-code/safety-dance/)
 [![MIT](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/functional-tim/easypassword/blob/main/LICENSE-MIT)
