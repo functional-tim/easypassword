@@ -16,6 +16,29 @@ use structopt::StructOpt;
 
 mod password;
 
+// Main program logic.
+fn main() {
+    let mut wordlist: Vec<String> = include_str!("../12dicts/International/3of6game.txt")
+        .split('\n')
+        .map(|x| x.parse::<String>().unwrap())
+        .collect();
+    let opt = Opt::from_args();
+    if opt.file.to_str() != Some("") {
+        wordlist = match lines_from_file(opt.file) {
+            Ok(x) => x,
+            Err((err, c)) => {
+                eprintln!("Error: {}", err);
+                exit(c);
+            }
+        };
+    }
+    transform(&mut wordlist);
+    let password =
+        password::create_password(&mut wordlist, opt.seperator1, opt.seperator2, opt.number);
+    println!("{}", password);
+    exit(exitcode::OK);
+}
+
 // Struct for the parameters of the app.
 #[derive(Debug, StructOpt)]
 #[structopt(
@@ -60,32 +83,10 @@ fn lines_from_file(filename: impl AsRef<Path>) -> Result<Vec<String>, (String, i
     }
 }
 
+// Change the first letter of every word to uppercase.
 fn transform(st: &mut Vec<String>) {
     for s in st {
         s.retain(|c| !c.is_whitespace());
         *s = s.to_title_case();
     }
-}
-
-// Main program logic.
-fn main() {
-    let mut wordlist: Vec<String> = include_str!("../12dicts/International/3of6game.txt")
-        .split('\n')
-        .map(|x| x.parse::<String>().unwrap())
-        .collect();
-    let opt = Opt::from_args();
-    if opt.file.to_str() != Some("") {
-        wordlist = match lines_from_file(opt.file) {
-            Ok(x) => x,
-            Err((err, c)) => {
-                eprintln!("Error: {}", err);
-                exit(c);
-            }
-        };
-    }
-    transform(&mut wordlist);
-    let password =
-        password::create_password(&mut wordlist, opt.seperator1, opt.seperator2, opt.number);
-    println!("{}", password);
-    exit(exitcode::OK);
 }
