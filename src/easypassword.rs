@@ -7,7 +7,8 @@
  *
  */
 
-use eframe::egui;
+use gtk::prelude::*;
+use gtk::{Application, ApplicationWindow};
 use heck::ToTitleCase;
 use std::fs::File;
 use std::io::{prelude::*, BufReader};
@@ -20,12 +21,22 @@ mod password;
 
 // Main program logic.
 fn main() {
-    let options = eframe::NativeOptions::default();
-    eframe::run_native(
-        "easypassword",
-        options,
-        Box::new(|_cc| Box::new(MyApp::default())),
-    );
+    let app = Application::builder().application_id("org.example.HelloWorld").build();
+
+    app.connect_activate(|app| {
+        // We create the main window.
+        let win = ApplicationWindow::builder()
+            .application(app)
+            .default_width(320)
+            .default_height(200)
+            .title("Hello, World!")
+            .build();
+
+        // Don't forget to make all widgets visible.
+        win.show_all();
+    });
+
+    app.run();
 }
 
 // Auxiliary function to transform the input file into a Vector of single words.
@@ -54,78 +65,4 @@ fn transform(st: &mut Vec<String>) {
 }
 
 // GUI implementations
-struct MyApp {
-    //wordlistpath: String,
-    wordlist: Vec<String>,
-    seperator1: String,
-    seperator2: String,
-    number: usize,
-    password: String,
-}
 
-impl Default for MyApp {
-    fn default() -> Self {
-        Self {
-            /*            wordlistpath: {
-                let wordlist: String = "../../12dicts/International/3of6game.txt".to_string();
-                wordlist
-            },
-            wordlist: Vec::new(),*/
-            wordlist: {
-                let mut wordlist: Vec<String> =
-                    include_str!("../12dicts/International/3of6game.txt")
-                        .split('\n')
-                        .map(|x| x.parse::<String>().unwrap())
-                        .collect();
-                transform(&mut wordlist);
-                wordlist
-            },
-            seperator1: "%".to_owned(),
-            seperator2: "5".to_owned(),
-            number: 4,
-            password: "".to_owned(),
-        }
-    }
-}
-
-impl eframe::App for MyApp {
-    fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
-        egui::CentralPanel::default().show(ctx, |ui| {
-            /*ui.horizontal(|ui| {
-                ui.label("Wordlist");
-                ui.text_edit_singleline(&mut self.wordlistpath);
-            });*/
-            ui.horizontal(|ui| {
-                ui.label("Seperator 1");
-                ui.text_edit_singleline(&mut self.seperator1);
-            });
-            ui.horizontal(|ui| {
-                ui.label("Seperator 2");
-                ui.text_edit_singleline(&mut self.seperator2);
-            });
-            ui.add(egui::Slider::new(&mut self.number, 4..=8).text("Number of words"));
-            if ui.button("Click to generatre password").clicked() {
-                /*self.wordlist = match lines_from_file(&mut self.wordlistpath) {
-                    Ok(x) => x,
-                    Err((err, _)) => {
-                        eprintln!("Error: {}", err);
-                        Vec::new()
-                    }
-                };
-                transform(&mut self.wordlist);*/
-                self.password = password::create_password(
-                    &mut self.wordlist,
-                    self.seperator1.to_owned(),
-                    self.seperator2.to_owned(),
-                    self.number,
-                );
-            }
-            ui.horizontal(|_ui| "");
-            ui.heading("Password");
-            ui.horizontal(|ui| {
-                //ui.label("Password");
-                ui.text_edit_singleline(&mut self.password);
-            });
-        });
-    }
-}

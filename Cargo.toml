@@ -12,11 +12,15 @@ keywords = ["password", "security"]
 categories = ["command-line-utilities"]
 
 [dependencies]
-eframe = "^0.19"
-egui = "^0.19"
+#eframe = "^0.19"
+#egui = "^0.19"
+cairo-sys-rs = "0.17.0"
 exitcode = "^1.1"
+gdk-pixbuf-sys = "0.17.0"
+gtk = "^0.17"
 heck = "^0.4"
 imgui = "^0.8.2"
+pango-sys = "0.17.0"
 rand = "^0.8"
 structopt = "^0.3"
 
