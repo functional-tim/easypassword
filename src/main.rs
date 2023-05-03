@@ -7,7 +7,6 @@
  *
  */
 
-use exitcode;
 use heck::ToTitleCase;
 use std::fs::File;
 use std::io::{prelude::*, BufReader};
