@@ -13,6 +13,6 @@ categories = ["command-line-utilities"]
 
 [dependencies]
 exitcode = "^1.1"
-heck = "^0.4"
+heck = "^0.5"
 rand = "^0.8"
 structopt = "^0.3"
