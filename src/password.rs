@@ -46,11 +46,11 @@ pub fn password(words: Vec<String>, mut s1: String, mut s2: String) -> String {
  *
  */
 pub fn choose_words(words: &mut Vec<String>, n: usize) -> Vec<String> {
-    let mut rng = rand::thread_rng();
+    let mut rng = rand::rng();
     let mut chosen: Vec<String> = Vec::with_capacity(n);
     //words = words.into_iter().map(|x| x.trim().to_string()).collect::<Vec<String>>();
     chosen.resize_with(n, || {
-        words.remove(rng.gen_range(0..words.len()))
+        words.remove(rng.random_range(0..words.len()))
     });
     chosen
 }
