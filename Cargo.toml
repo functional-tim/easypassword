@@ -1,8 +1,8 @@
 [package]
 name = "easypassword"
-version = "0.2.2"
+version = "0.3.0"
 authors = ["functional-tim <tim.gravert@web.de>"]
-edition = "2018"
+edition = "2021"
 description = "A program to create passwords like in xkcd.com/936.\nThe file has to have one word per line.\nOne seperator should be a special character.\nThe other seperator should be a number."
 readme = "README.md"
 homepage = "https://github.com/functional-tim/easypassword"
