@@ -53,10 +53,12 @@ fn lines_from_file(filename: impl AsRef<Path>) -> Result<Vec<String>, (String, i
     let buf = BufReader::new(file);
     match buf.lines().collect() {
         Ok(res) => Ok(res),
-        Err(_) => Err((String::from("file contained invalid UTF-8"), exitcode::DATAERR)),
+        Err(_) => Err((
+            String::from("file contained invalid UTF-8"),
+            exitcode::DATAERR,
+        )),
     }
 }
-
 
 fn transform(st: &mut Vec<String>) {
     for s in st {
@@ -65,10 +67,12 @@ fn transform(st: &mut Vec<String>) {
     }
 }
 
-
 // Main program logic.
 fn main() {
-    let mut wordlist: Vec<String> = include_str!("../12dicts/International/3of6game.txt").split('\n').map(|x| x.parse::<String>().unwrap()).collect();
+    let mut wordlist: Vec<String> = include_str!("../12dicts/International/3of6game.txt")
+        .split('\n')
+        .map(|x| x.parse::<String>().unwrap())
+        .collect();
     let opt = Opt::from_args();
     if opt.file.to_str() != Some("") {
         wordlist = match lines_from_file(opt.file) {
@@ -80,8 +84,8 @@ fn main() {
         };
     }
     transform(&mut wordlist);
-    let password = password::create_password(&mut wordlist, opt.seperator1, opt.seperator2, opt.number);
+    let password =
+        password::create_password(&mut wordlist, opt.seperator1, opt.seperator2, opt.number);
     println!("{}", password);
     exit(exitcode::OK);
 }
-

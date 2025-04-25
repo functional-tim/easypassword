@@ -10,7 +10,7 @@
 use rand::Rng;
 use std::mem::swap;
 
-/* 
+/*
  * Function to create a easy to remember password.
  * It takes the wordlist, two seperators and the number which is the number of words in the
  * password.
@@ -49,8 +49,6 @@ pub fn choose_words(words: &mut Vec<String>, n: usize) -> Vec<String> {
     let mut rng = rand::rng();
     let mut chosen: Vec<String> = Vec::with_capacity(n);
     //words = words.into_iter().map(|x| x.trim().to_string()).collect::<Vec<String>>();
-    chosen.resize_with(n, || {
-        words.remove(rng.random_range(0..words.len()))
-    });
+    chosen.resize_with(n, || words.remove(rng.random_range(0..words.len())));
     chosen
 }
