@@ -9,7 +9,7 @@
 
 use heck::ToTitleCase;
 use std::fs::File;
-use std::io::{prelude::*, BufReader};
+use std::io::{BufReader, prelude::*};
 use std::path::{Path, PathBuf};
 use std::process::exit;
 use structopt::StructOpt;
